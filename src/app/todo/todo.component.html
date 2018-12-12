@@ -1,0 +1,24 @@
+<div class="jumbotron" style="padding: 45px 0px">
+      <h4 class="text-center"> To Do List</h4>
+</div>
+<div class="input-group">
+  <input type="text" class="form-control" #title>
+  <div class="col-md-1" id="button">
+        <i class="fa fa-plus-circle fa-2x" (click)="onAdd(title)"></i>
+  </div>
+</div>
+
+<div style="margin: 5px 0px">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor = "let item of taskList">
+      <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.key,item.isChecked)">
+        <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+      </span>
+     <span [ngClass]="item.isChecked?'strikethrough':'normal'"> {{item.title}} </span>
+      <span class="hover-cursor text-danger pull-right">
+        <i class="fa fa-trash-o fa-lg" (click)="onDelete(item.key)"></i>
+      </span>
+    </li>
+  </ul>
+
+</div>
